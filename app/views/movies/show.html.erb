@@ -1,0 +1,17 @@
+<div class="banner">
+<h1>watch list</h1>
+</div>
+<div>
+  <img src="<%= @movie.poster_url %>">
+  <div>
+  <%= @movie.title %>
+  <%= @movie.overview %>
+  </div>
+
+  <div>
+  <h3>rating :</h3>
+  <%= @movie.rating %>
+  </div>
+
+<%= link_to "All movies", movies_path %>
+</div>

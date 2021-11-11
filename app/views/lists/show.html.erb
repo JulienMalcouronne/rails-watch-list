@@ -1,0 +1,44 @@
+<div>
+  <div>
+  <h1><%= @list.name %></h1>
+  </div>
+<div class="container">
+<%= link_to "Add a movie", new_list_bookmark_path(@list)  %>
+<%= link_to "All lists", lists_path %>
+</div>
+<div class="container">
+  <div class="cards">
+    <% @list.movies.each do |movie| %>
+    <div class="card">
+      <img src=<%= movie.poster_url %> alt="">
+      <div class="card-trip-infos">
+        <h2><%= movie.title %></h2>
+        <p><%= movie.overview %></p>
+         <%# <p><%= @list.bookmarks[0].comment</p> %>
+      </div>
+      <div class="card-trip-pricing">
+        <h2><%= movie.rating %><i class="fas fa-star"></i></h2>
+      </div>
+        <%= link_to "Remove",
+              bookmark_path(movie.bookmarks[0]),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+    </div>
+    <% end%>
+  </div>
+</div>
+</div>
+
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<h1>All the movies</h1>
+<h4><%= "all #{@movies.length} movies"%></h4>
+<ul>
+    <% @movies.each do |movie|%>
+    <li>
+      <img src="<%= movie.poster_url %>">
+      <%= movie.title %>
+      <br>
+      <%= movie.overview %>
+      <br>
+      <%= movie.ratins %>
+      <br>
+      <%= link_to "All movies", movies_path %>
+    </li>
+  <% end %>
+
+</ul>
