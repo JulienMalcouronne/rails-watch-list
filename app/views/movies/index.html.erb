@@ -6,24 +6,37 @@
 </form>
 </div> %>
 
+<%= link_to "All lists", lists_path, :class => "btn btn-gradient ms-3 mt-3 mb-1" %>
+<h1><%= "all our movies (#{@movies.length}):"%></h1>
 
-<h1><%= "all our movies (#{@movies.length})"%></h1>
 <div>
-<ul class="container">
-  <% @movies.each do |movie| %>
-    <li>
-    <img src="<%= movie.poster_url %>">
-      <%= movie.title %>
-      <br>
-      <%= movie.overview %>
-      <br>
-      <%= movie.rating %>
-      <br>
+  <div class="container">
+    <div class="cards">
+      <% @movies.each do |movie| %>
+      <div class="card">
+          <img src="<%= movie.poster_url %>">
+        <div class="card-trip-infos">
+          <%= movie.title %>
+          <%= movie.overview %>
+        </div>
+          <div class="card-trip-pricing">
+            <h2><%= movie.rating %><i class="fas fa-star"></i></h2>
+          </div>
 
-      <%= link_to "more info", movie_path(movie[:id]) %>
-    </li>
+            <%= link_to "more info", movie_path(movie[:id]) %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-  <% end %>
 
-</ul>
+<div class="footer">
+  <div class="footer-links">
+    <a href="https://github.com/JulienMalcouronne"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/julien-malcouronne/"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i>
+  </div>
 </div>

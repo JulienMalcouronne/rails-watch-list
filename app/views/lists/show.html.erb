@@ -1,28 +1,43 @@
-<div>
-  <div>
-  <h1><%= @list.name %></h1>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<h2><i class="fas fa-film ms-4"></i></h2>
+<div class="buttons">
+  <%= link_to "All lists", lists_path, :class => "btn btn-gradient me-1" %>
+  <%= link_to "add a list", list_path("new"), :class => "btn btn-gradient me-4" %>
+</div>
+</div>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/collection/190727/800x600);">
+  <div class="container">
+    <h1><%= @list.name %> </h1>
   </div>
-<div class="container">
-<%= link_to "Add a movie", new_list_bookmark_path(@list)  %>
-<%= link_to "All lists", lists_path %>
+</div>
+
+
+<div>
+<div class="container2">
+<%= link_to "Add a movie", new_list_bookmark_path(@list), :class => "btn btn-success"  %>
+
 </div>
 <div class="container">
   <div class="cards">
-    <% @list.movies.each do |movie| %>
+    <% @list.bookmarks.each do |bookmark| %>
     <div class="card">
-      <img src=<%= movie.poster_url %> alt="">
+        <img src=<%= bookmark.movie.poster_url %> alt="">
       <div class="card-trip-infos">
-        <h2><%= movie.title %></h2>
-        <p><%= movie.overview %></p>
-         <%# <p><%= @list.bookmarks[0].comment</p> %>
-      </div>
-      <div class="card-trip-pricing">
-        <h2><%= movie.rating %><i class="fas fa-star"></i></h2>
-      </div>
-        <%= link_to "Remove",
-              bookmark_path(movie.bookmarks[0]),
+        <div>
+          <h2><%= bookmark.movie.title %></h2>
+          <p><%= bookmark.movie.overview %></p>
+          <h4><i class="fas fa-quote-left"></i><%= bookmark.comment %></h4>
+        </div>
+        <div class="card-trip-pricing">
+              <h2><%= bookmark.movie.rating %><i class="fas fa-star"></i></h2>
+            <%= link_to "Remove",
+              bookmark_path(bookmark),
               method: :delete,
               data: { confirm: "Are you sure?" } %>
+        </div>
+      </div>
+
     </div>
     <% end%>
   </div>
@@ -32,11 +47,8 @@
 
 <div class="footer">
   <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/JulienMalcouronne"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/julien-malcouronne/"><i class="fab fa-linkedin"></i></a>
   </div>
   <div class="footer-copyright">
     This footer is made with <i class="fas fa-heart"></i>
