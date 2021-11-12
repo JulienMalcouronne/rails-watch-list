@@ -1,9 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-<h2><i class="fas fa-film ms-4"></i></h2>
-<div class="buttons">
-  <%= link_to "All movies", movies_path, :class => "btn btn-gradient me-1" %>
-  <%= link_to "add a list", list_path("new"), :class => "btn btn-gradient me-4" %>
-</div>
+  <h2><i class="fas fa-film ms-4"></i></h2>
+  <div class="buttons">
+    <%= link_to "All movies", movies_path, :class => "btn btn-gradient me-1" %>
+    <%= link_to "add a list", list_path("new"), :class => "btn btn-gradient me-4" %>
+  </div>
 </div>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1325&q=80);">
   <div class="container">
@@ -12,7 +12,7 @@
 </div>
 
 <div class="test-container">
-<%= link_to "Create a movie list", list_path("new"), :class => "btn btn-success"  %>
+  <%= link_to "Create a movie list", list_path("new"), :class => "btn btn-success"  %>
 </div>
 <div class="container">
 
@@ -20,27 +20,19 @@
 
     <% @lists.each do |list| %>
       <% if list.photo.attached?%>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
-      <%= link_to list.name, list_path(list[:id]), :class => "deco-none" %>
-        <%= link_to "Remove",
-            list_path(list),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-    </div>
-      <% end  %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+          <%= link_to list.name, list_path(list[:id]), :class => "deco-none" %>
+            <%= link_to list_path(list), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fas fa-trash"></i>
+            <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
-<i class="fas fa-trash"></i>
-:class =>
 
 </div>
 
-<%# <%= cl_image_tag("ecqcsphn5gjgkrwrkmac",
-      width: 400, height: 300, crop: :fill) %>
 
-<!-- for face detection -->
-<%# <%= cl_image_tag("xmlj3l4mt7noel7tqmow",
-      width: 150, height: 150, crop: :thumb, gravity: :face) %>
 
 <div class="footer">
   <div class="footer-links">
