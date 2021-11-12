@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
 
   def search
      @movies = Movie.where("name LIKE '%#{params[:query]}%'")
+    #  correction quizz : @movies = Movie.where(title: params[:query])
   end
 
   private
